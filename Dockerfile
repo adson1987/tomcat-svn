@@ -20,7 +20,10 @@ COPY apache-maven-3.5.4-bin.tar.gz /
 COPY apache-tomcat-8.5.34.tar.gz /
 # TODO: Install required packages here:
 # RUN yum install -y ... && yum clean all -y
-RUN yum install -y rubygems && yum clean all -y
+RUN yum install -y rubygems kde-l10n-Chinese telnet && \
+    yum -y reinstall glibc-common && \
+    yum clean all -y && \
+    localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
 RUN gem install asdf
 RUN INSTALL_PKGS="tar java-1.8.0-openjdk java-1.8.0-openjdk-devel subversion" && \
     yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
@@ -35,12 +38,6 @@ RUN INSTALL_PKGS="tar java-1.8.0-openjdk java-1.8.0-openjdk-devel subversion" &&
     mkdir -p /opt/s2i/destination && \
     mkdir /tmp/src && \
     mkdir -p /opt/maven/repository/ && \
-    echo "LC_ALL=\"en_US.UTF-8\"" >> ~/.bashrc && \
-    echo "LANG=\"en_US.UTF-8\"" >> ~/.bashrc && \
-    echo "LANGUAGE=\"en_US.UTF-8\"" >> ~/.bashrc && \
-    source ~/.bashrc && \
-    locale > /a.txt && \
-    cat /a.txt && \
     chmod 777 /opt/maven/repository
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
