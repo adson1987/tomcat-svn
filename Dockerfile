@@ -22,7 +22,7 @@ COPY apache-tomcat-8.5.34.tar.gz /
 # RUN yum install -y ... && yum clean all -y
 RUN yum install -y rubygems && yum clean all -y
 RUN gem install asdf
-RUN INSTALL_PKGS="tar java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
+RUN INSTALL_PKGS="tar java-1.8.0-openjdk java-1.8.0-openjdk-devel subversion" && \
     yum install -y --enablerepo=centosplus $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
