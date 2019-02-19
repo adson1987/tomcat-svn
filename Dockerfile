@@ -8,7 +8,10 @@ EXPOSE 8080
 # ENV BUILDER_VERSION 1.0
 ENV TOMCAT_VERSION=8.5.34 \
     MAVEN_VERSION=3.5.4 \
-    STI_SCRIPTS_PATH=/usr/libexec/s2i/
+    STI_SCRIPTS_PATH=/usr/libexec/s2i/ \
+    LC_ALL=zh_CN.utf8 \
+    LANG=zh_CN.utf8 \
+    LANGUAGE=zh_CN.utf8
 
 # TODO: Set labels used in OpenShift to describe the builder image
 LABEL io.k8s.description="Platform for building and running JEE applications on tomcat" \
