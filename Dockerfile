@@ -21,7 +21,6 @@ COPY apache-tomcat-8.5.34.tar.gz /
 # TODO: Install required packages here:
 # RUN yum install -y ... && yum clean all -y
 RUN yum install -y rubygems kde-l10n-Chinese telnet && \
-    yum -y reinstall glibc-common && \
     yum clean all -y && \
     localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
 RUN gem install asdf
