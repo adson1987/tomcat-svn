@@ -21,7 +21,7 @@ fi
 
 echo "---> Installing application source..."
 #cp -Rf /tmp/src/. ./
-WORK_DIR=/tmp/src;
+WORK_DIR=/opt/s2i/destination/src;
 cd $WORK_DIR;
 if [ ! -z ${SVN_URI} ] ; then
   echo "Fetching source from Subversion repository ${SVN_URI}"
@@ -33,6 +33,6 @@ if [ ! -z ${SVN_URI} ] ; then
 else
   echo "SVN_URI not set, skip Subverion source download";
 fi
-find /tmp/src/ -name '*.war'|xargs -i mv -v {} /tomcat/webapps/ROOT.war
+find /opt/s2i/destination/src/ -name '*.war'|xargs -i mv -v {} /tomcat/webapps/ROOT.war
 echo "---> Building application from source..."
 # TODO: Add build steps for your application, eg npm install, bundle install, pip install, etc.
