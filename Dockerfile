@@ -35,10 +35,12 @@ RUN INSTALL_PKGS="tar java-1.8.0-openjdk java-1.8.0-openjdk-devel subversion" &&
     mkdir -p /opt/s2i/destination && \
     mkdir /tmp/src && \
     mkdir -p /opt/maven/repository/ && \
-    echo "LC_ALL=\"zh_CN.UTF-8\"" >> ~/.bashrc && \
-    echo "LANG=\"zh_CN.UTF-8\"" >> ~/.bashrc && \
-    echo "LANGUAGE=\"zh_CN.UTF-8\"" >> ~/.bashrc && \
+    echo "LC_ALL=\"en_US.UTF-8\"" >> ~/.bashrc && \
+    echo "LANG=\"en_US.UTF-8\"" >> ~/.bashrc && \
+    echo "LANGUAGE=\"en_US.UTF-8\"" >> ~/.bashrc && \
     source ~/.bashrc && \
+    locale > /a.txt && \
+    cat /a.txt && \
     chmod 777 /opt/maven/repository
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
